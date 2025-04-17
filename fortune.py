@@ -1,22 +1,32 @@
-import sys
+import random
 
-# Personal Info
-name = "Your Name Here"          # ✏️ Replace with your full name
-admission_number = "YourID1234"  # ✏️ Replace with your admission number
+name = "Your Name Here"
+admission_number = "YourID1234"
 
-# Welcome Message
 print(f"\n🔮 Welcome to {name}'s Fortune Teller ({admission_number}) 🔮")
 
-# Ask for mood
-mood = input("\nHow are you feeling today? (happy/sad/neutral): ").strip().lower()
+mood = input("\nHow are you feeling today? (happy/sad/neutral/stressed): ").strip().lower()
 
-# Fortune responses
-if mood == "happy":
-    print(f"\n✨ Your fortune: Great things await you, {name.split()[0]}! Keep smiling. ✨")
-elif mood == "sad":
-    print("\n✨ Your fortune: Tough times don’t last, but tough people do. Better days are coming! ✨")
-elif mood == "neutral":
-    print("\n✨ Your fortune: A surprise opportunity is around the corner. Stay alert! ✨")
+fortunes = {
+    "happy": [
+        f"Great things await you, {name.split()[0]}! Keep smiling.",
+        "Happiness is contagious – spread it everywhere you go!"
+    ],
+    "sad": [
+        "This too shall pass. Keep your head up!",
+        "Every storm runs out of rain – better times ahead!"
+    ],
+    "neutral": [
+        "A surprise opportunity is around the corner. Stay alert!",
+        "Calm minds build powerful futures. Stay steady!"
+    ],
+    "stressed": [
+        f"Take a deep breath, {name.split()[0]}. You’ve got this.",
+        "Stress fades when purpose takes its place. You’re strong!"
+    ]
+}
+
+if mood in fortunes:
+    print("\n✨ Your fortune:", random.choice(fortunes[mood]), "✨")
 else:
-    print("\n❗ I don't have a fortune for that mood. Try again with happy/sad/neutral.")
-    sys.exit(1)
+    print("\n❗ Mood not recognized. Please enter one of: happy/sad/neutral/stressed.")
